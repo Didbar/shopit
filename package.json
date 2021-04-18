@@ -1,0 +1,21 @@
+{
+  "name": "shopit",
+  "version": "1.0.0",
+  "description": "MERN E-commerce site",
+  "main": "server.js",
+  "scripts": {
+    "start":"node backend/server.js",
+    "dev": "SET NODE_ENV=DEVELOPMENTS& nodemon backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server"
+  },
+  "author": "Davit Didbaridze",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
