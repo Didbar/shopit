@@ -10,7 +10,7 @@
                 "url": "https://res.cloudinary.com/doxyiccev/image/upload/v1618777071/shopit/products/laptop_yc4khs.jpg"
             }
         ],
-        "category": "Laptop",
+        "category": "Laptops",
         "seller": "Ebay",
         "stock": 40,
         "numOfReviews": 32,
@@ -27,7 +27,7 @@
                 "url": "https://res.cloudinary.com/doxyiccev/image/upload/v1618777132/shopit/products/cheese_vmoomy.png"
             }
         ],
-        "category": "Food",
+        "category": "Foods",
         "seller": "Ebay",
         "stock": 50,
         "numOfReviews": 12,

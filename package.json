@@ -4,9 +4,10 @@
   "description": "MERN E-commerce site",
   "main": "server.js",
   "scripts": {
-    "start":"node backend/server.js",
+    "start": "node backend/server.js",
     "dev": "SET NODE_ENV=DEVELOPMENTS& nodemon backend/server",
-    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server"
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
+    "seeder": "node backend/utils/seeder.js"
   },
   "author": "Davit Didbaridze",
   "license": "ISC",
