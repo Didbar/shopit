@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Laptop Silver Cool",
+        "price": "455.99",
+        "description": "A Product Specification, commonly referred to as a product spec, is an important product document that outlines key requirements for building a new feature, functionality, or product. Like a blueprint, a product spec contains key information (e.g., target users, business needs, goals, and other essential details) to help guide the product team in building a successful product.",
+        "ratings": 4.5,
+        "images": [
+            {
+                "public_id": "products/trrmmm4ddgge",
+                "url": "https://res.cloudinary.com/doxyiccev/image/upload/v1618777071/shopit/products/laptop_yc4khs.jpg"
+            }
+        ],
+        "category": "Laptop",
+        "seller": "Ebay",
+        "stock": 40,
+        "numOfReviews": 32,
+        "reviews": []
+    },
+    {
+        "name": "Cheese",
+        "price": "23",
+        "description": "A Product Specification, commonly referred to as a product spec, is an important product document that outlines key requirements for building a new feature, functionality, or product. Like a blueprint, a product spec contains key information (e.g., target users, business needs, goals, and other essential details) to help guide the product team in building a successful product.",
+        "ratings": 4.9,
+        "images": [
+            {
+                "public_id": "products/trdasdsadsad",
+                "url": "https://res.cloudinary.com/doxyiccev/image/upload/v1618777132/shopit/products/cheese_vmoomy.png"
+            }
+        ],
+        "category": "Food",
+        "seller": "Ebay",
+        "stock": 50,
+        "numOfReviews": 12,
+        "reviews": []
+    }
+]
