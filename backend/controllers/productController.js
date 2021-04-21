@@ -82,7 +82,6 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Create new review  =>  /api/v1/review
-
 exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   const { rating, comment, productId } = req.body;
 
@@ -119,5 +118,15 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+  });
+});
+
+//Get Products Reviews  => /api/v1/reviews
+exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
+  const product = await Product.findById(req.query.id);
+
+  res.status(200).json({
+    success: true,
+    reviews: product.reviews,
   });
 });
