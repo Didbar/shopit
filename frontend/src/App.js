@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 import Home from "./components/Home";
+import ProductDetails from "./components/product/productDetails";
 import { HelmetProvider } from "react-helmet-async";
 
-import "./App.css";
+import "./App.scss";
 
 const App = () => {
   const helmetContext = {};
@@ -14,6 +15,7 @@ const App = () => {
         <Header />
         <Router>
           <div className="container container-fluid">
+            <Route path="/product/:id" component={ProductDetails} exact />
             <Route path="/" component={Home} exact />
           </div>
         </Router>

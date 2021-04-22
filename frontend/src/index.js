@@ -3,10 +3,25 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./store";
 
+import { positions, transitions, Provider as AlertProvider } from "react-alert";
+
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  timeout: 5000,
+  position: positions.MIDDLE_RIGHT,
+  transition: transitions.SCALE,
+};
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AlertProvider template={AlertTemplate} {...options}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AlertProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
