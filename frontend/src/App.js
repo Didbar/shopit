@@ -12,14 +12,15 @@ const App = () => {
   return (
     <HelmetProvider context={helmetContext}>
       <div className="App">
-        <Header />
         <Router>
+          <Header />
           <div className="container container-fluid">
-            <Route path="/product/:id" component={ProductDetails} exact />
             <Route path="/" component={Home} exact />
+            <Route path="/search/:keyword" component={Home} />
+            <Route path="/product/:id" component={ProductDetails} exact />
           </div>
+          <Footer />
         </Router>
-        <Footer />
       </div>
     </HelmetProvider>
   );

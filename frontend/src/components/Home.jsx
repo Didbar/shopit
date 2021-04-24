@@ -9,7 +9,7 @@ import { getProducts } from "../actions/productActions";
 import { useAlert } from "react-alert";
 import Pagination from "react-js-pagination";
 
-const Home = () => {
+const Home = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -17,17 +17,18 @@ const Home = () => {
   const { loading, products, error, productsCount, resPerPage } = useSelector(
     (state) => state.products
   );
-
-  function setCurrentPageNo(pageNumber) {
-    setCurrentPage(pageNumber);
-  }
+  const keyword = match.params.keyword;
 
   useEffect(() => {
     if (error) {
       return alert.error(error);
     }
-    dispatch(getProducts(currentPage));
-  }, [dispatch, error, alert, currentPage]);
+    dispatch(getProducts(keyword, currentPage));
+  }, [dispatch, error, alert, keyword, currentPage]);
+
+  function setCurrentPageNo(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
 
   return (
     <Fragment>
