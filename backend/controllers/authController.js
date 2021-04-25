@@ -61,9 +61,25 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
   };
-  //Update Avatar TODO
 
-  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+
+    const image_id = user.avatar.public_id;
+    const res = await cloudinary.v2.uploader.destroy(image_id);
+
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+    newUserData.avatar = {
+      public_id: result.public_id,
+      url: result.url,
+    };
+  }
+
+  await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
     userFindAndModify: false,
@@ -190,7 +206,6 @@ exports.logoutUser = catchAsyncErrors(async (req, res, next) => {
 //ADMIN ROUTES
 
 //Get All Users  => /api/v1/admin/users
-
 exports.allUsers = catchAsyncErrors(async (req, res, next) => {
   const users = await User.find();
 

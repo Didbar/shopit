@@ -20,7 +20,7 @@ const Profile = () => {
             <div className="col-12 col-md-3">
               <Avatar user={user} />
               <Link
-                to="#!"
+                to="/me/update"
                 id="edit_profile"
                 className="btn btn-primary btn-block my-5"
               >

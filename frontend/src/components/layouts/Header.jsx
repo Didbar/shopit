@@ -46,7 +46,7 @@ function Header() {
             <div className="ml-4 dropdown d-inline">
               <Link
                 to="#!"
-                className="btn dropdown-toggle text-white"
+                className="btn dropdown-toggle text-white mr-4"
                 type="button"
                 id="dropDownMenuButton"
                 data-toggle="dropdown"
@@ -59,8 +59,8 @@ function Header() {
                     alt={user && user.name}
                     className="rounded-circle mr-2"
                   />
-                  <span>{user && user.name}</span>
                 </figure>
+                <span>{user && user.name}</span>
               </Link>
 
               <div
