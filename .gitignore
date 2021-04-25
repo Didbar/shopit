@@ -70,7 +70,6 @@ web_modules/
 
 # dotenv environment variables file
 backend/config/config.env
-/home/david/Desktop/github/shopit/backend/config/config.env
 .env
 .env.test
 
