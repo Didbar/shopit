@@ -11,6 +11,8 @@ import { HelmetProvider } from "react-helmet-async";
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
+import Payment from "./components/cart/Payment";
+import OrderSuccess from "./components/cart/OrderSuccess";
 
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
@@ -24,8 +26,12 @@ import { loadUser } from "./actions/userActions";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import store from "./store";
 
-import { axios } from "axios";
+import axios from "axios";
 import "./App.scss";
+
+//Payment
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 const App = () => {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -55,6 +61,13 @@ const App = () => {
             <Route path="/cart" component={Cart} exact />
             <ProtectedRoute path="/shipping" component={Shipping} />
             <ProtectedRoute path="/order/confirm" component={ConfirmOrder} />
+            <ProtectedRoute path="/success" component={OrderSuccess} />
+
+            {stripeApiKey && (
+              <Elements stripe={loadStripe(stripeApiKey)}>
+                <ProtectedRoute path="/payment" component={Payment} />
+              </Elements>
+            )}
 
             <Route path="/search/:keyword" component={Home} />
             <Route path="/product/:id" component={ProductDetails} exact />

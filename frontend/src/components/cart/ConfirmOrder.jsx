@@ -28,7 +28,7 @@ const ConfirmOrder = ({ history }) => {
     };
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    history.push("/");
+    history.push("/payment");
   };
 
   return (
@@ -54,9 +54,9 @@ const ConfirmOrder = ({ history }) => {
           <h4 className="mt-4">Your Cart Items:</h4>
 
           {cartItems.map((item) => (
-            <Fragment>
+            <Fragment key={item.product}>
               <hr />
-              <div className="cart-item my-1" key={item.product}>
+              <div className="cart-item my-1">
                 <div className="row">
                   <div className="col-4 col-lg-2">
                     <img
@@ -74,7 +74,7 @@ const ConfirmOrder = ({ history }) => {
                   <div className="col-4 col-lg-4 mt-4 mt-lg-0">
                     <p>
                       {item.quantity} x ${item.price} ={" "}
-                      <b>${item.quantity * item.price}</b>
+                      <b>${(item.quantity * item.price).toFixed(2)}</b>
                     </p>
                   </div>
                 </div>
