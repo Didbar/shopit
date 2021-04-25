@@ -23,6 +23,7 @@
     "mongoose": "^5.12.4",
     "nodemailer": "^6.5.0",
     "react-helmet-async": "^1.0.9",
+    "stripe": "^8.145.0",
     "validator": "^13.6.0"
   },
   "devDependencies": {
