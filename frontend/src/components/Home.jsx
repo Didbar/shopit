@@ -28,7 +28,7 @@ const Home = ({ match }) => {
     "Laptops",
     "Accessories",
     "Headphones",
-    "Foods",
+    "Food",
     "Books",
     "Clothes/Shoes",
     "Beauty/Health",

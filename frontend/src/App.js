@@ -8,13 +8,17 @@ import ProductDetails from "./components/product/productDetails";
 
 import { HelmetProvider } from "react-helmet-async";
 
+//Cart Imports
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
 import Payment from "./components/cart/Payment";
+
+//Order Imports
 import OrderSuccess from "./components/cart/OrderSuccess";
 import ListOrders from "./components/order/ListOrders";
 
+//User Imports
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import Profile from "./components/user/Profile";
@@ -22,6 +26,13 @@ import UpdateProfile from "./components/user/UpdateProfile";
 import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
 import NewPassword from "./components/user/NewPassword";
+
+//Admin Imports
+import Dashboard from "./components/admin/Dashboard";
+import ProductList from "./components/admin/ProductList";
+import UpdateProduct from "./components/admin/UpdateProduct";
+import CreateProduct from "./components/admin/CreateProduct";
+import OrderDetails from "./components/order/OrderDetails";
 
 import { loadUser } from "./actions/userActions";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -33,10 +44,11 @@ import "./App.scss";
 //Payment
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import OrderDetails from "./components/order/OrderDetails";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const [stripeApiKey, setStripeApiKey] = useState("");
+  const { user, loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
     store.dispatch(loadUser());
@@ -62,10 +74,11 @@ const App = () => {
             />
             <Route path="/cart" component={Cart} exact />
             <ProtectedRoute path="/shipping" component={Shipping} />
-            <ProtectedRoute path="/order/confirm" component={ConfirmOrder} />
-            <ProtectedRoute path="/success" component={OrderSuccess} />
+
+            <ProtectedRoute path="/success" component={OrderSuccess} exact />
             <ProtectedRoute path="/orders/me" component={ListOrders} exact />
             <ProtectedRoute path="/order/:id" component={OrderDetails} exact />
+            <ProtectedRoute path="/confirm/order" component={ConfirmOrder} />
 
             {stripeApiKey && (
               <Elements stripe={loadStripe(stripeApiKey)}>
@@ -85,7 +98,32 @@ const App = () => {
             />
             <Route path="/" component={Home} exact />
           </div>
-          <Footer />
+          <ProtectedRoute
+            path="/dashboard"
+            isAdmin={true}
+            component={Dashboard}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/products"
+            isAdmin={true}
+            component={ProductList}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/product"
+            isAdmin={true}
+            component={CreateProduct}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/product/:id"
+            isAdmin={true}
+            component={UpdateProduct}
+            exact
+          />
+
+          {!loading && user.role !== "admin" && <Footer />}
         </Router>
       </div>
     </HelmetProvider>
