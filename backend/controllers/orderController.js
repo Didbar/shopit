@@ -51,7 +51,7 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-//Get Logged in user Order => /api/v1/orders/me
+//Get Logged in user Orders => /api/v1/orders/me
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
   const orders = await Order.find({ user: req.user.id });
 
