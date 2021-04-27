@@ -35,7 +35,7 @@ const Profile = () => {
               <h4>Email Address</h4>
               <p>{user.email}</p>
 
-              <Link to="#!" className="btn btn-danger btn-block mt-5">
+              <Link to="/orders/me" className="btn btn-danger btn-block mt-5">
                 My Orders
               </Link>
 
