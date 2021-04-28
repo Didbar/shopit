@@ -33,6 +33,9 @@ import ProductList from "./components/admin/ProductList";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import CreateProduct from "./components/admin/CreateProduct";
 import OrderDetails from "./components/order/OrderDetails";
+import OrdersList from "./components/admin/OrdersList";
+import UsersList from "./components/admin/UsersList";
+import ProcessOrder from "./components/admin/ProcessOrder";
 
 import { loadUser } from "./actions/userActions";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -45,6 +48,7 @@ import "./App.scss";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
+import UpdateUser from "./components/admin/UpdateUser";
 
 const App = () => {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -122,8 +126,32 @@ const App = () => {
             component={UpdateProduct}
             exact
           />
+          <ProtectedRoute
+            path="/admin/orders"
+            isAdmin={true}
+            component={OrdersList}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/order/:id"
+            isAdmin={true}
+            component={ProcessOrder}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/users"
+            isAdmin={true}
+            component={UsersList}
+            exact
+          />
+          <ProtectedRoute
+            path="/admin/user/:id"
+            isAdmin={true}
+            component={UpdateUser}
+            exact
+          />
 
-          {!loading && user.role !== "admin" && <Footer />}
+          {!loading && user && user.role !== "admin" && <Footer />}
         </Router>
       </div>
     </HelmetProvider>
